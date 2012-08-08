@@ -1,0 +1,10 @@
+*.qml~
+*.swp
+*.moc
+*~
+Makefile
+moc_*.cpp
+qrc_*.cpp
+.project
+*.pro.user
+*.o
