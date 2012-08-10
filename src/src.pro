@@ -9,7 +9,7 @@ QT += declarative
 INCLUDEPATH = .
 
 CONFIG += mobility
-MOBILITY += location bearer
+MOBILITY += location
 
 HEADERS += \
     routegeomap.h \
@@ -26,6 +26,7 @@ RESOURCES += qml.qrc
 
 contains(MEEGO_EDITION, harmattan) {
     DEFINES += MEEGO_EDITION_HARMATTAN
+    target.path = /opt/src/bin
 }
 
 INSTALLS += target
