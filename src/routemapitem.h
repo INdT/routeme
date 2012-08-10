@@ -6,6 +6,7 @@
 
 #include <qgeoserviceprovider.h>
 #include <qgeomappingmanager.h>
+#include <qgeocoordinate.h>
 
 class RouteGeoMap;
 
@@ -31,6 +32,8 @@ public:
     QString providerName() const { return m_providerName; }
     void setProviderName(const QString &providerName);
 
+    void componentComplete();
+
 signals:
     void latitudeChanged();
     void longitudeChanged();
@@ -46,6 +49,7 @@ private:
     qreal m_latitude;
     qreal m_longitude;
     QString m_providerName;
+    QGeoCoordinate m_coordinate;
 };
 
 #endif

@@ -2,7 +2,8 @@
 #include "routegeomap.h"
 
 RouteMapItem::RouteMapItem(QDeclarativeItem *parent)
-    : m_map(0)
+    : QDeclarativeItem(parent)
+    , m_map(0)
     , m_serviceProvider(0)
     , m_mapManager(0)
     , m_latitude(0)
@@ -20,6 +21,7 @@ void RouteMapItem::init()
 
     QGeoMappingManager *m_mapManager = m_serviceProvider->mappingManager();
     m_map = new RouteGeoMap(m_mapManager, this);
+    m_map->setGeometry(0, 0, 480, 864);
 }
 
 void RouteMapItem::setLatitude(qreal latitude)
@@ -54,4 +56,17 @@ void RouteMapItem::setProviderName(const QString &providerName)
 
     m_providerName = providerName;
     emit providerNameChanged();
+}
+
+void RouteMapItem::componentComplete()
+{
+    if (m_latitude == 0 && m_longitude == 0)
+        return;
+
+    m_coordinate.setLatitude(m_latitude);
+    m_coordinate.setLongitude(m_longitude);
+    m_coordinate.setAltitude(0.0);
+
+    m_map->setZoomLevel(5.0);
+    m_map->setCenter(m_coordinate);
 }
