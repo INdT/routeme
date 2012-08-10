@@ -9,9 +9,11 @@ INCLUDEPATH = .
 CONFIG += mobility
 MOBILITY += location bearer
 
-HEADERS +=
+HEADERS += \
+    routegeomap.h
 
 SOURCES += \
+    routegeomap.cpp \
     main.cpp
 
 INSTALLS += target
