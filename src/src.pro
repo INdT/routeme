@@ -4,6 +4,8 @@ TARGET = routeme
 
 TEMPLATE = app
 
+QT += declarative
+
 INCLUDEPATH = .
 
 CONFIG += mobility
