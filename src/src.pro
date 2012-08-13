@@ -15,13 +15,15 @@ HEADERS += \
     routegeomap.h \
     routemapitem.h \
     routeme.h \
-    serviceprovider.h
+    serviceprovider.h \
+    routepositioninfo.h
 
 SOURCES += \
     routegeomap.cpp \
     routemapitem.cpp \
     routeme.cpp \
     serviceprovider.cpp \
+    routepositioninfo.cpp \
     main.cpp
 
 RESOURCES += qml.qrc
