@@ -1,27 +1,22 @@
 #include "routemapitem.h"
 #include "routegeomap.h"
+#include "serviceprovider.h"
 
 RouteMapItem::RouteMapItem(QDeclarativeItem *parent)
     : QDeclarativeItem(parent)
     , m_map(0)
-    , m_serviceProvider(0)
     , m_mapManager(0)
     , m_latitude(0)
     , m_longitude(0)
+    , m_zoomLevel(0)
 {
     init();
 }
 
 void RouteMapItem::init()
 {
-    if (!m_providerName.isEmpty())
-        m_serviceProvider = new QGeoServiceProvider(m_providerName);
-    else
-        m_serviceProvider = new QGeoServiceProvider("nokia");
-
-    QGeoMappingManager *m_mapManager = m_serviceProvider->mappingManager();
+    m_mapManager = ServiceProvider::instance()->mappingManager();
     m_map = new RouteGeoMap(m_mapManager, this);
-    m_map->setGeometry(0, 0, 480, 864);
 }
 
 void RouteMapItem::setLatitude(qreal latitude)
@@ -46,6 +41,19 @@ void RouteMapItem::setLongitude(qreal longitude)
     update();
 }
 
+void RouteMapItem::setZoomLevel(qreal zoom)
+{
+    if (zoom < 0)
+        return;
+
+    if (zoom == m_zoomLevel)
+        return;
+
+    m_zoomLevel = zoom;
+
+    emit zoomLevelChanged();
+}
+
 void RouteMapItem::setProviderName(const QString &providerName)
 {
     if (providerName.isEmpty())
@@ -67,6 +75,10 @@ void RouteMapItem::componentComplete()
     m_coordinate.setLongitude(m_longitude);
     m_coordinate.setAltitude(0.0);
 
+    m_map->setCenterLatitude(m_latitude);
+    m_map->setCenterLongitude(m_longitude);
     m_map->setZoomLevel(5.0);
     m_map->setCenter(m_coordinate);
+
+    m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
 }
