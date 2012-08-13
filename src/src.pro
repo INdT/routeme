@@ -14,12 +14,14 @@ MOBILITY += location
 HEADERS += \
     routegeomap.h \
     routemapitem.h \
-    routeme.h
+    routeme.h \
+    serviceprovider.h
 
 SOURCES += \
     routegeomap.cpp \
     routemapitem.cpp \
     routeme.cpp \
+    serviceprovider.cpp \
     main.cpp
 
 RESOURCES += qml.qrc
