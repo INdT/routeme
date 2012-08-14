@@ -19,15 +19,18 @@ void RoutePositionInfo::init()
     m_searchManager = ServiceProvider::instance()->searchManager();
 
     m_infoSourceSatellite = QGeoPositionInfoSource::createDefaultSource(this);
-    m_infoSourceSatellite->setPreferredPositioningMethods(QGeoPositionInfoSource::SatellitePositioningMethods);
-
-    connect(m_infoSourceSatellite, SIGNAL(positionUpdated(const QGeoPositionInfo &)),
+    if (m_infoSourceSatellite) {
+        m_infoSourceSatellite->setPreferredPositioningMethods(QGeoPositionInfoSource::SatellitePositioningMethods);
+        connect(m_infoSourceSatellite, SIGNAL(positionUpdated(const QGeoPositionInfo &)),
             this, SLOT(onPositionUpdated(const QGeoPositionInfo &)));
+    }
 
     m_infoSourceCellId = QGeoPositionInfoSource::createDefaultSource(this);
-    m_infoSourceCellId->setPreferredPositioningMethods(QGeoPositionInfoSource::NonSatellitePositioningMethods);
-    connect(m_infoSourceCellId, SIGNAL(positionUpdated(const QGeoPositionInfo &)),
+    if (m_infoSourceCellId) {
+        m_infoSourceCellId->setPreferredPositioningMethods(QGeoPositionInfoSource::NonSatellitePositioningMethods);
+        connect(m_infoSourceCellId, SIGNAL(positionUpdated(const QGeoPositionInfo &)),
             this, SLOT(onPositionUpdated(const QGeoPositionInfo &)));
+    }
 
 }
 
