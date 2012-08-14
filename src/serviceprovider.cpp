@@ -15,6 +15,12 @@ ServiceProvider::ServiceProvider()
     m_serviceProvider = new QGeoServiceProvider("nokia");
 }
 
+ServiceProvider::~ServiceProvider()
+{
+    if (m_serviceProvider)
+        delete m_serviceProvider;
+}
+
 QGeoMappingManager *ServiceProvider::mappingManager()
 {
     if (!m_serviceProvider)
