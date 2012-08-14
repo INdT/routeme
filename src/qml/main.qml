@@ -9,9 +9,7 @@ Window {
         id: map
         width: 480
         height: 864
-
-        latitude: -3.0
-        longitude: -60.0
+        zoomLevel: 10
     }
 
     Page {

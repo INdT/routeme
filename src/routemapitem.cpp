@@ -1,16 +1,25 @@
-#include "routemapitem.h"
 #include "routegeomap.h"
+#include "routemapitem.h"
+#include "routepositioninfo.h"
 #include "serviceprovider.h"
 
 RouteMapItem::RouteMapItem(QDeclarativeItem *parent)
     : QDeclarativeItem(parent)
     , m_map(0)
     , m_mapManager(0)
+    , m_positionInfo(0)
     , m_latitude(0)
     , m_longitude(0)
     , m_zoomLevel(0)
 {
     init();
+}
+
+RouteMapItem::~RouteMapItem()
+{
+    m_mapManager->deleteLater();
+    m_map->deleteLater();
+    m_positionInfo->deleteLater();
 }
 
 void RouteMapItem::init()
@@ -68,17 +77,31 @@ void RouteMapItem::setProviderName(const QString &providerName)
 
 void RouteMapItem::componentComplete()
 {
-    if (m_latitude == 0 && m_longitude == 0)
+    m_map->setZoomLevel(m_zoomLevel);
+    m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
+}
+
+void RouteMapItem::classBegin()
+{
+
+    m_positionInfo = new RoutePositionInfo(this);
+    connect(m_positionInfo, SIGNAL(currentCoordinateAvailable(const QGeoCoordinate &)),
+            this, SLOT(onCurrentCoordinateAvailable(const QGeoCoordinate &)));
+
+    m_positionInfo->currentCoordinate();
+}
+
+void RouteMapItem::onCurrentCoordinateAvailable(const QGeoCoordinate &coordinate)
+{
+    if (!coordinate.isValid())
         return;
 
-    m_coordinate.setLatitude(m_latitude);
-    m_coordinate.setLongitude(m_longitude);
-    m_coordinate.setAltitude(0.0);
+    m_coordinate = coordinate;
+    m_latitude = coordinate.latitude();
+    m_longitude = coordinate.longitude();
 
     m_map->setCenterLatitude(m_latitude);
     m_map->setCenterLongitude(m_longitude);
-    m_map->setZoomLevel(5.0);
     m_map->setCenter(m_coordinate);
 
-    m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
 }

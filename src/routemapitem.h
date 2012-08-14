@@ -9,6 +9,7 @@
 #include <qgeocoordinate.h>
 
 class RouteGeoMap;
+class RoutePositionInfo;
 
 using namespace QtMobility;
 
@@ -23,6 +24,7 @@ class RouteMapItem : public QDeclarativeItem
 
 public:
     RouteMapItem(QDeclarativeItem *parent = 0);
+    ~RouteMapItem();
 
     qreal latitude() const { return m_latitude; }
     void setLatitude(qreal latitude);
@@ -37,6 +39,7 @@ public:
     void setProviderName(const QString &providerName);
 
     void componentComplete();
+    void classBegin();
 
 signals:
     void latitudeChanged();
@@ -44,11 +47,15 @@ signals:
     void providerNameChanged();
     void zoomLevelChanged();
 
+private slots:
+    void onCurrentCoordinateAvailable(const QGeoCoordinate &coordinate);
+
 private:
     void init();
 
     RouteGeoMap *m_map;
     QGeoMappingManager *m_mapManager;
+    RoutePositionInfo *m_positionInfo;
 
     qreal m_latitude;
     qreal m_longitude;
