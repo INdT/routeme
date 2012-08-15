@@ -7,6 +7,7 @@ TEMPLATE = app
 QT += declarative
 
 INCLUDEPATH = .
+DESTDIR = ../
 
 CONFIG += mobility
 MOBILITY += location
