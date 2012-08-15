@@ -45,7 +45,7 @@ void RoutePositionInfo::onPositionUpdated(const QGeoPositionInfo &info)
     m_infoSourceCellId->stopUpdates();
 }
 
-void RoutePositionInfo::currentCoordinate()
+void RoutePositionInfo::startUpdates()
 {
     if (!m_infoSourceSatellite || !m_infoSourceCellId)
         return;

@@ -19,7 +19,7 @@ public:
     ~RoutePositionInfo();
 
     void coordinateToPlace(const QGeoCoordinate &coordinate);
-    void currentCoordinate();
+    void startUpdates();
 
 signals:
     void currentCoordinateAvailable(const QGeoCoordinate &coordinate);

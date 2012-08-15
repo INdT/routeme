@@ -88,7 +88,7 @@ void RouteMapItem::classBegin()
     connect(m_positionInfo, SIGNAL(currentCoordinateAvailable(const QGeoCoordinate &)),
             this, SLOT(onCurrentCoordinateAvailable(const QGeoCoordinate &)));
 
-    m_positionInfo->currentCoordinate();
+    m_positionInfo->startUpdates();
 }
 
 void RouteMapItem::onCurrentCoordinateAvailable(const QGeoCoordinate &coordinate)
