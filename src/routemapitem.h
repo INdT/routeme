@@ -42,8 +42,8 @@ public:
     void classBegin();
 
 signals:
-    void latitudeChanged();
-    void longitudeChanged();
+    void latitudeChanged(qreal latitude);
+    void longitudeChanged(qreal longitude);
     void providerNameChanged();
     void zoomLevelChanged();
 

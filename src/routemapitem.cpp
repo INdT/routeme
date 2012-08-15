@@ -26,6 +26,9 @@ void RouteMapItem::init()
 {
     m_mapManager = ServiceProvider::instance()->mappingManager();
     m_map = new RouteGeoMap(m_mapManager, this);
+
+    connect(this, SIGNAL(latitudeChanged(qreal)), m_map, SLOT(setCenterLatitude(qreal)));
+    connect(this, SIGNAL(longitudeChanged(qreal)), m_map, SLOT(setCenterLongitude(qreal)));
 }
 
 void RouteMapItem::setLatitude(qreal latitude)
@@ -35,7 +38,7 @@ void RouteMapItem::setLatitude(qreal latitude)
 
     m_latitude = latitude;
 
-    emit latitudeChanged();
+    emit latitudeChanged(m_latitude);
 
     update();
 }
@@ -46,7 +49,7 @@ void RouteMapItem::setLongitude(qreal longitude)
         return;
 
     m_longitude = longitude;
-    emit longitudeChanged();
+    emit longitudeChanged(m_longitude);
     update();
 }
 
