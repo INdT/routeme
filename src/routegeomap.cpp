@@ -30,14 +30,14 @@ double RouteGeoMap::centerLongitude() const
     return center().longitude();
 }
 
-void RouteGeoMap::setCenterLatitude(double lat)
+void RouteGeoMap::setCenterLatitude(qreal lat)
 {
     QGeoCoordinate c = center();
     c.setLatitude(lat);
     setCenter(c);
 }
 
-void RouteGeoMap::setCenterLongitude(double lon)
+void RouteGeoMap::setCenterLongitude(qreal lon)
 {
     QGeoCoordinate c = center();
     c.setLongitude(lon);

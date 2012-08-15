@@ -16,9 +16,11 @@ public:
     ~RouteGeoMap();
 
     double centerLatitude() const;
-    void setCenterLatitude(double latitude);
     double centerLongitude() const;
-    void setCenterLongitude(double longitude);
+
+public slots:
+    void setCenterLatitude(qreal latitude);
+    void setCenterLongitude(qreal longitude);
 
 private:
     bool panActive;
