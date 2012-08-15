@@ -20,6 +20,7 @@ public:
 
     void coordinateToPlace(const QGeoCoordinate &coordinate);
     void startUpdates();
+    void stopUpdates();
 
 signals:
     void currentCoordinateAvailable(const QGeoCoordinate &coordinate);

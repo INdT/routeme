@@ -41,8 +41,7 @@ void RoutePositionInfo::onPositionUpdated(const QGeoPositionInfo &info)
 
     emit currentCoordinateAvailable(info.coordinate());
 
-    m_infoSourceSatellite->stopUpdates();
-    m_infoSourceCellId->stopUpdates();
+    stopUpdates();
 }
 
 void RoutePositionInfo::startUpdates()
@@ -52,6 +51,15 @@ void RoutePositionInfo::startUpdates()
 
     m_infoSourceSatellite->startUpdates();
     m_infoSourceCellId->startUpdates();
+}
+
+void RoutePositionInfo::stopUpdates()
+{
+    if (!m_infoSourceSatellite || !m_infoSourceCellId)
+        return;
+
+    m_infoSourceSatellite->stopUpdates();
+    m_infoSourceCellId->stopUpdates();
 }
 
 void RoutePositionInfo::coordinateToPlace(const QGeoCoordinate &coordinate)
