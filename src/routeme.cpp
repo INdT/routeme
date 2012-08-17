@@ -1,5 +1,7 @@
 #include "routeme.h"
 #include "routemapitem.h"
+#include "routecoordinateitem.h"
+#include "routepositioninfo.h"
 
 #include <QDeclarativeView>
 #include <QDeclarativeContext>
@@ -16,6 +18,8 @@ RouteMe::RouteMe(QWidget *parent)
     setCentralWidget(m_view);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 
+    qmlRegisterType<RouteCoordinateItem>("com.routeme.types", 1, 0, "RouteCoordinate");
+    qmlRegisterType<RoutePositionInfo>("com.routeme.types", 1, 0, "RoutePositionInfo");
     qmlRegisterType<RouteMapItem>("com.routeme.types", 1, 0, "RouteMeMap");
 
     m_view->setSource(QUrl("qrc:/qml/main.qml"));
