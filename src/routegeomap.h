@@ -22,19 +22,19 @@ public slots:
     void setCenterLatitude(qreal latitude);
     void setCenterLongitude(qreal longitude);
 
+signals:
+    void clicked(QGeoMapObject *marker);
+    void panned();
+
 private:
     bool panActive;
     bool markerPressed;
-    QGeoMapObject *pressed;
+    QGeoMapObject *objectPressed;
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void wheelEvent(QGraphicsSceneWheelEvent *event);
     void keyPressEvent(QKeyEvent *event);
-
-signals:
-    void clicked(QGeoMapObject *marker);
-    void panned();
 };
 #endif

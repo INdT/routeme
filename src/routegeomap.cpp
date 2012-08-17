@@ -11,7 +11,7 @@ RouteGeoMap::RouteGeoMap(QGeoMappingManager *manager,  QGraphicsItem *parent)
     : QGraphicsGeoMap(manager, parent)
     , panActive(false)
     , markerPressed(false)
-    , pressed(0)
+    , objectPressed(0)
 {
     setFocus();
 }
@@ -50,7 +50,7 @@ void RouteGeoMap::mousePressEvent(QGraphicsSceneMouseEvent *event)
     markerPressed = false;
     QList<QGeoMapObject*> objects = mapObjectsAtScreenPosition(event->pos());
     if (objects.size() > 0) {
-        pressed = objects.first();
+        objectPressed = objects.first();
         markerPressed = true;
     }
 
@@ -65,8 +65,8 @@ void RouteGeoMap::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     if (markerPressed) {
         // check if we're still over the object
         QList<QGeoMapObject*> objects = mapObjectsAtScreenPosition(event->pos());
-        if (objects.contains(pressed)) {
-            emit clicked(pressed);
+        if (objects.contains(objectPressed)) {
+            emit clicked(objectPressed);
         }
 
         markerPressed = false;
