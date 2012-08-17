@@ -39,7 +39,10 @@ void RoutePositionInfo::onPositionUpdated(const QGeoPositionInfo &info)
     if (!info.isValid() || !info.coordinate().isValid())
         return;
 
-    emit currentCoordinateAvailable(info.coordinate());
+    QGeoCoordinate coordinate = info.coordinate();
+    m_currentCoordinate.setGeoCoordinate(coordinate);
+
+    emit currentCoordinateAvailable();
 
     stopUpdates();
 }
@@ -88,4 +91,9 @@ void RoutePositionInfo::onReverseGeocodeFinished()
     emit coordinateToPlaceAvailable(places);
 
     reply->deleteLater();
+}
+
+RouteCoordinateItem* RoutePositionInfo::currentCoordinate()
+{
+    return &m_currentCoordinate;
 }
