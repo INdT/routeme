@@ -4,7 +4,7 @@ TARGET = routeme
 
 TEMPLATE = app
 
-QT += declarative
+QT += declarative network
 
 INCLUDEPATH = .
 DESTDIR = ../
@@ -16,6 +16,7 @@ HEADERS += \
     routegeomap.h \
     routemapitem.h \
     routeme.h \
+    routemeserver.h \
     serviceprovider.h \
     routepositioninfo.h \
     routecoordinateitem.h
@@ -24,6 +25,7 @@ SOURCES += \
     routegeomap.cpp \
     routemapitem.cpp \
     routeme.cpp \
+    routemeserver.cpp \
     serviceprovider.cpp \
     routepositioninfo.cpp \
     routecoordinateitem.cpp \
