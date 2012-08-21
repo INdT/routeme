@@ -4,6 +4,9 @@
 #include <qgeorouterequest.h>
 #include <qgeoroutereply.h>
 
+#include <QPen>
+#include <QBrush>
+
 RoutingManager::RoutingManager(QObject *parent)
     : QObject(parent)
     , m_routingManager(0)
@@ -79,6 +82,14 @@ void RoutingManager::onCalculateRouteFinished(QGeoRouteReply *reply)
     if (!reply->routes().isEmpty()) {
         QGeoRoute route = reply->routes().at(0);
         QGeoMapRouteObject *routeObject = new QGeoMapRouteObject(route);
+
+        QPen pen;
+        pen.setBrush(QBrush(Qt::blue, Qt::SolidPattern));
+        pen.setWidth(3);
+        routeObject->setPen(pen);
+
+        routeObject->setDetailLevel(8);
+
         m_routeObject = new RouteMapObject;
         m_routeObject->setGeoMapRouteObject(routeObject);
         emit routeAvailable();
