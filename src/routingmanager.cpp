@@ -65,8 +65,8 @@ void RoutingManager::calculateRoute()
     destination.setLongitude(m_destination->longitude());
 
     QGeoRouteRequest routeRequest(origin, destination);
-    routeRequest.setTravelModes(QGeoRouteRequest::CarTravel | QGeoRouteRequest::PublicTransitTravel);
-    routeRequest.setRouteOptimization(QGeoRouteRequest::ShortestRoute | QGeoRouteRequest::FastestRoute);
+    routeRequest.setTravelModes(QGeoRouteRequest::CarTravel);
+    routeRequest.setRouteOptimization(QGeoRouteRequest::ShortestRoute);
 
     m_routingManager->calculateRoute(routeRequest);
 }
@@ -76,7 +76,7 @@ void RoutingManager::onCalculateRouteFinished(QGeoRouteReply *reply)
     if (!reply)
         return;
 
-    if (reply->routes().size() > 0) {
+    if (!reply->routes().isEmpty()) {
         QGeoRoute route = reply->routes().at(0);
         QGeoMapRouteObject *routeObject = new QGeoMapRouteObject(route);
         m_routeObject = new RouteMapObject;
