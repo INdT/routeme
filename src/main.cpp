@@ -9,11 +9,11 @@ int main(int argc, char *argv[])
     app.setOrganizationName("INdT");
 
     RouteMe routeme;
-    routeme.setGeometry(0, 0, 480, 864);
 
 #if defined(MEEGO_EDITION_HARMATTAN)
     routeme.showFullScreen();
 #else
+    routeme.setGeometry(0, 0, 480, 864);
     routeme.show();
 #endif
 
