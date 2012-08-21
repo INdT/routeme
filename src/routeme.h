@@ -3,6 +3,8 @@
 
 #include <QtGui/QMainWindow>
 
+class RouteMeServer;
+
 class QDeclarativeView;
 class QDeclarativeContext;
 
@@ -17,5 +19,6 @@ public:
 private:
     QDeclarativeView *m_view;
     QDeclarativeContext *m_context;
+    RouteMeServer *m_server;
 };
 #endif

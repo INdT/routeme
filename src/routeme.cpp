@@ -1,4 +1,6 @@
+
 #include "routeme.h"
+#include "routemeserver.h"
 #include "routemapitem.h"
 #include "routecoordinateitem.h"
 #include "routepositioninfo.h"
@@ -23,6 +25,9 @@ RouteMe::RouteMe(QWidget *parent)
     qmlRegisterType<RouteMapItem>("com.routeme.types", 1, 0, "RouteMeMap");
 
     m_view->setSource(QUrl("qrc:/qml/main.qml"));
+
+    m_server = new RouteMeServer(this);
+    m_server->listen();
 }
 
 RouteMe::~RouteMe()
