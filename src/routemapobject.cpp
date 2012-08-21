@@ -16,3 +16,8 @@ void RouteMapObject::setGeoMapRouteObject(QGeoMapRouteObject *route)
 {
     m_routeObject = route;
 }
+
+QGeoMapRouteObject* RouteMapObject::geoMapRouteObject()
+{
+    return m_routeObject;
+}

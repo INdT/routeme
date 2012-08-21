@@ -16,6 +16,7 @@ public:
     ~RouteMapObject();
 
     void setGeoMapRouteObject(QGeoMapRouteObject *route);
+    QGeoMapRouteObject* geoMapRouteObject();
 
 private:
     QGeoMapRouteObject *m_routeObject;
