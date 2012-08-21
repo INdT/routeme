@@ -39,6 +39,19 @@ Window {
         zoomLevel: 13
     }
 
+    RoutemeToolbar {
+        id: mainToolbar
+        anchors.bottom: map.bottom
+
+        onZoomIn: {
+            map.zoomLevel += 1
+        }
+
+        onZoomOut: {
+            map.zoomLevel -= 1
+        }
+    }
+
     Page {
         orientationLock: PageOrientation.LockPortrait
     }
