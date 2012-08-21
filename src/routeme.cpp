@@ -1,23 +1,26 @@
 
+#include "routecontroller.h"
+#include "routecoordinateitem.h"
+#include "routemapitem.h"
+#include "routemapobject.h"
 #include "routeme.h"
 #include "routemeserver.h"
-#include "routemapitem.h"
-#include "routecoordinateitem.h"
 #include "routepositioninfo.h"
-#include "routemapobject.h"
 #include "routingmanager.h"
 
-#include <QDeclarativeView>
-#include <QDeclarativeContext>
-#include <QDeclarativeEngine>
-#include <QUrl>
+#include <QtCore/QUrl>
+#include <QtDeclarative/QDeclarativeContext>
+#include <QtDeclarative/QDeclarativeEngine>
+#include <QtDeclarative/QDeclarativeView>
 
 RouteMe::RouteMe(QWidget *parent)
     : QMainWindow(parent)
     , m_view(new QDeclarativeView(this))
     , m_context(m_view->rootContext())
+    , m_controller(new RouteController(this))
 {
     connect(m_view->engine(), SIGNAL(quit()), SLOT(close()));
+    m_context->setContextProperty("controller", m_controller);
 
     setCentralWidget(m_view);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
@@ -30,8 +33,7 @@ RouteMe::RouteMe(QWidget *parent)
 
     m_view->setSource(QUrl("qrc:/qml/main.qml"));
 
-    m_server = new RouteMeServer(this);
-    m_server->listen();
+    m_controller->init();
 }
 
 RouteMe::~RouteMe()

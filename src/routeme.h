@@ -3,7 +3,7 @@
 
 #include <QtGui/QMainWindow>
 
-class RouteMeServer;
+class RouteController;
 
 class QDeclarativeView;
 class QDeclarativeContext;
@@ -19,6 +19,6 @@ public:
 private:
     QDeclarativeView *m_view;
     QDeclarativeContext *m_context;
-    RouteMeServer *m_server;
+    RouteController *m_controller;
 };
 #endif
