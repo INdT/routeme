@@ -5,33 +5,38 @@ import Qt.labs.components.native 1.0
 Window {
     id: main
 
+    RouteManager {
+        id: manager
+
+        destination: RouteCoordinate {
+            latitude: -3.135661
+            longitude: -59.992884
+        }
+
+        onRouteAvailable: {
+            map.route = manager.route
+        }
+    }
+
     RoutePositionInfo {
         id: positionInfo
 
         onCurrentCoordinateAvailable: {
-            console.log("##: " + currentCoordinate.latitude)
-            coordinateItem = currentCoordinate
+            map.coordinate = currentCoordinate
+            manager.origin = currentCoordinate
+            manager.calculateRoute()
         }
+
         Component.onCompleted: {
-            console.log("initializing updates...")
             startUpdates();
         }
-    }
-
-    RouteCoordinate {
-        id: coordinateItem
-
-        latitude: -3.0
-        longitude: -60.0
     }
 
     RouteMeMap {
         id: map
         width: 480
         height: 864
-        zoomLevel: 10
-
-        coordinate: coordinateItem
+        zoomLevel: 13
     }
 
     Page {
