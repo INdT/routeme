@@ -49,6 +49,7 @@ void RouteMapItem::setZoomLevel(qreal zoom)
 
     m_zoomLevel = zoom;
 
+    m_map->setZoomLevel(m_zoomLevel);
     emit zoomLevelChanged();
 }
 
@@ -66,7 +67,6 @@ void RouteMapItem::setProviderName(const QString &providerName)
 
 void RouteMapItem::componentComplete()
 {
-    m_map->setZoomLevel(m_zoomLevel);
     m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
 }
 
