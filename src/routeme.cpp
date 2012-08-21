@@ -4,6 +4,8 @@
 #include "routemapitem.h"
 #include "routecoordinateitem.h"
 #include "routepositioninfo.h"
+#include "routemapobject.h"
+#include "routingmanager.h"
 
 #include <QDeclarativeView>
 #include <QDeclarativeContext>
@@ -22,6 +24,8 @@ RouteMe::RouteMe(QWidget *parent)
 
     qmlRegisterType<RouteCoordinateItem>("com.routeme.types", 1, 0, "RouteCoordinate");
     qmlRegisterType<RoutePositionInfo>("com.routeme.types", 1, 0, "RoutePositionInfo");
+    qmlRegisterType<RouteMapObject>("com.routeme.types", 1, 0, "Route");
+    qmlRegisterType<RoutingManager>("com.routeme.types", 1, 0, "RouteManager");
     qmlRegisterType<RouteMapItem>("com.routeme.types", 1, 0, "RouteMeMap");
 
     m_view->setSource(QUrl("qrc:/qml/main.qml"));
