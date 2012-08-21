@@ -21,7 +21,8 @@ HEADERS += \
     routepositioninfo.h \
     routecoordinateitem.h \
     routemapobject.h \
-    routingmanager.h
+    routingmanager.h \
+    routecontroller.h
 
 SOURCES += \
     routegeomap.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
     routecoordinateitem.cpp \
     routemapobject.cpp \
     routingmanager.cpp \
+    routecontroller.cpp \
     main.cpp
 
 RESOURCES += qml.qrc
