@@ -8,6 +8,7 @@ Item {
 
     signal zoomIn()
     signal zoomOut()
+    signal routeMe()
 
     Rectangle {
         id: background
@@ -19,6 +20,14 @@ Item {
     Row {
         anchors.centerIn: parent
         spacing: 20
+
+        Button {
+            id: send
+
+            width: 150
+            text: "Route Me"
+            onClicked: toolbar.routeMe()
+        }
 
         Button {
             id: zoomIn

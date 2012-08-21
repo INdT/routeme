@@ -50,6 +50,11 @@ Window {
         onZoomOut: {
             map.zoomLevel -= 1
         }
+
+        onRouteMe: {
+            //TODO it might send the current location as sms
+            console.log("RouteMe: Sending your current location...")
+        }
     }
 
     Page {
