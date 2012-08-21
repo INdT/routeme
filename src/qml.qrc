@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>qml/RoutemeToolbar.qml</file>
         <file>qml/main.qml</file>
     </qresource>
 </RCC>
