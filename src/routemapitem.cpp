@@ -8,6 +8,7 @@ RouteMapItem::RouteMapItem(QDeclarativeItem *parent)
     , m_mapManager(0)
     , m_zoomLevel(0)
     , m_coordinate(0)
+    , m_route(0)
 {
     init();
 }
@@ -67,4 +68,16 @@ void RouteMapItem::componentComplete()
 {
     m_map->setZoomLevel(m_zoomLevel);
     m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
+}
+
+RouteMapObject* RouteMapItem::route()
+{
+    return m_route;
+}
+
+void RouteMapItem::setRoute(RouteMapObject *route)
+{
+    m_route = route;
+    m_map->addMapObject(m_route->geoMapRouteObject());
+    emit routeChanged();
 }
