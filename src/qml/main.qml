@@ -8,6 +8,7 @@ Window {
     RouteManager {
         id: manager
 
+        //XXX Just for tests purpose
         destination: RouteCoordinate {
             latitude: -3.135661
             longitude: -59.992884
@@ -18,6 +19,19 @@ Window {
         }
     }
 
+    RouteSearchManager {
+        id: searchManager
+
+        onPlaceAvailable: {
+            console.log("### state:  "+place.address.state)
+            console.log("### city:  "+place.address.city)
+            console.log("### street:  "+place.address.street)
+            console.log("### postcode:  "+place.address.postcode)
+            console.log("### latitude:  "+place.coordinate.latitude)
+            console.log("### longitude:  "+place.coordinate.longitude)
+        }
+    }
+
     RoutePositionInfo {
         id: positionInfo
 
@@ -25,6 +39,10 @@ Window {
             map.coordinate = currentCoordinate
             manager.origin = currentCoordinate
             manager.calculateRoute()
+            searchManager.coordinate = currentCoordinate
+            searchManager.searchPlace()
+
+            stopUpdates()
         }
 
         Component.onCompleted: {
