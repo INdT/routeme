@@ -3,7 +3,6 @@
 
 RoutePositionInfo::RoutePositionInfo(QObject *parent)
     : QObject(parent)
-    , m_searchManager(0)
     , m_infoSourceSatellite(0)
     , m_infoSourceCellId(0)
 {
@@ -16,8 +15,6 @@ RoutePositionInfo::~RoutePositionInfo()
 
 void RoutePositionInfo::init()
 {
-    m_searchManager = ServiceProvider::instance()->searchManager();
-
     m_infoSourceSatellite = QGeoPositionInfoSource::createDefaultSource(this);
     if (m_infoSourceSatellite) {
         m_infoSourceSatellite->setPreferredPositioningMethods(QGeoPositionInfoSource::SatellitePositioningMethods);
@@ -63,34 +60,6 @@ void RoutePositionInfo::stopUpdates()
 
     m_infoSourceSatellite->stopUpdates();
     m_infoSourceCellId->stopUpdates();
-}
-
-void RoutePositionInfo::coordinateToPlace(const QGeoCoordinate &coordinate)
-{
-    if (!m_searchManager)
-        return;
-
-    if (!coordinate.isValid())
-        return;
-
-    QGeoSearchReply *reply = m_searchManager->reverseGeocode(coordinate);
-    connect(reply, SIGNAL(finished()), this, SLOT(onReverseGeocodeFinished()));
-    connect(reply, SIGNAL(error(QGeoSearchReply::Error, const QString &)),
-            this, SIGNAL(searchReplyError(QGeoSearchReply::Error, const QString &)));
-}
-
-void RoutePositionInfo::onReverseGeocodeFinished()
-{
-    QGeoSearchReply *reply = qobject_cast<QGeoSearchReply *>(sender());
-
-    QList<QGeoPlace> places;
-    if (reply) {
-        places = reply->places();
-    }
-
-    emit coordinateToPlaceAvailable(places);
-
-    reply->deleteLater();
 }
 
 RouteCoordinateItem* RoutePositionInfo::currentCoordinate()
