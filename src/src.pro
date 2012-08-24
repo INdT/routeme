@@ -22,7 +22,7 @@ HEADERS += \
     routecoordinateitem.h \
     routemapobject.h \
     routingmanager.h \
-    routecontroller.h \
+    routemecontroller.h \
     routemeaddress.h \
     routeplace.h \
     routesearchmanager.h
@@ -37,7 +37,7 @@ SOURCES += \
     routecoordinateitem.cpp \
     routemapobject.cpp \
     routingmanager.cpp \
-    routecontroller.cpp \
+    routemecontroller.cpp \
     routemeaddress.cpp \
     routeplace.cpp \
     routesearchmanager.cpp \

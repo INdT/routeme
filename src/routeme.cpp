@@ -1,6 +1,6 @@
 
 #include "routemeaddress.h"
-#include "routecontroller.h"
+#include "routemecontroller.h"
 #include "routecoordinateitem.h"
 #include "routemapitem.h"
 #include "routemapobject.h"
@@ -20,7 +20,7 @@ RouteMe::RouteMe(QWidget *parent)
     : QMainWindow(parent)
     , m_view(new QDeclarativeView(this))
     , m_context(m_view->rootContext())
-    , m_controller(new RouteController(this))
+    , m_controller(new RouteMeController(this))
 {
     connect(m_view->engine(), SIGNAL(quit()), SLOT(close()));
     m_context->setContextProperty("controller", m_controller);
