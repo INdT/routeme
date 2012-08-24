@@ -1,7 +1,7 @@
 #ifndef ROUTEMAPITEM_H
 #define ROUTEMAPITEM_H
 
-#include <QDeclarativeItem>
+#include <QtDeclarative/QDeclarativeItem>
 
 #include <qgeoserviceprovider.h>
 #include <qgeomappingmanager.h>

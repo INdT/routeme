@@ -1,7 +1,7 @@
 #ifndef ROUTECOORDINATEITEM_H
 #define ROUTECOORDINATEITEM_H
 
-#include <QObject>
+#include <QtCore/QObject>
 #include <qgeocoordinate.h>
 
 using namespace QtMobility;

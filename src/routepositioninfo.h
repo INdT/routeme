@@ -1,7 +1,7 @@
 #ifndef ROUTEPOSITIONINFO_H
 #define ROUTEPOSITIONINFO_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
 #include <qgeocoordinate.h>
 #include <qgeopositioninfosource.h>

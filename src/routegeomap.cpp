@@ -1,9 +1,9 @@
 #include "routegeomap.h"
 
-#include <QGraphicsSceneMouseEvent>
-#include <QGraphicsSceneWheelEvent>
-#include <QPropertyAnimation>
-#include <QParallelAnimationGroup>
+#include <QtCore/QParallelAnimationGroup>
+#include <QtCore/QPropertyAnimation>
+#include <QtGui/QGraphicsSceneMouseEvent>
+#include <QtGui/QGraphicsSceneWheelEvent>
 
 #include "qgeocoordinate.h"
 
