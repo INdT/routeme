@@ -1,6 +1,6 @@
 #include "routeplace.h"
 #include "routecoordinateitem.h"
-#include "routeaddress.h"
+#include "routemeaddress.h"
 
 RoutePlace::RoutePlace(QObject *parent)
     : QObject(parent)
@@ -24,12 +24,12 @@ void RoutePlace::setCoordinate(RouteCoordinateItem *coordinate)
     emit coordinateChanged();
 }
 
-RouteAddress* RoutePlace::address()
+RouteMeAddress* RoutePlace::address()
 {
     return m_address;
 }
 
-void RoutePlace::setAddress(RouteAddress* address)
+void RoutePlace::setAddress(RouteMeAddress* address)
 {
     m_address = address;
     emit addressChanged();
@@ -38,6 +38,6 @@ void RoutePlace::setAddress(RouteAddress* address)
 void RoutePlace::setGeoPlace(const QGeoPlace &place)
 {
     m_place = place;
-    m_address = new RouteAddress;
+    m_address = new RouteMeAddress;
     m_address->setGeoAddress(place.address());
 }

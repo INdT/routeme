@@ -1,12 +1,12 @@
-#ifndef ROUTEADDRESS_H
-#define ROUTEADDRESS_H
+#ifndef ROUTEMEADDRESS_H
+#define ROUTEMEADDRESS_H
 
 #include <QtCore/QObject>
 #include <qgeoaddress.h>
 
 using namespace QtMobility;
 
-class RouteAddress : public QObject
+class RouteMeAddress : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString city READ city WRITE setCity NOTIFY cityChanged)
@@ -17,8 +17,8 @@ class RouteAddress : public QObject
     Q_PROPERTY(QString street READ street WRITE setStreet NOTIFY streetChanged)
 
 public:
-    RouteAddress(QObject *parent = 0);
-    ~RouteAddress();
+    RouteMeAddress(QObject *parent = 0);
+    ~RouteMeAddress();
 
     QString city() const { return m_city; }
     void setCity(const QString &city);

@@ -5,7 +5,7 @@
 
 #include <qgeoplace.h>
 
-class RouteAddress;
+class RouteMeAddress;
 class RouteCoordinateItem;
 
 using namespace QtMobility;
@@ -13,15 +13,15 @@ using namespace QtMobility;
 class RoutePlace : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(RouteAddress* address READ address WRITE setAddress NOTIFY addressChanged)
+    Q_PROPERTY(RouteMeAddress* address READ address WRITE setAddress NOTIFY addressChanged)
     Q_PROPERTY(RouteCoordinateItem* coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged)
 
 public:
     RoutePlace(QObject *parent = 0);
     ~RoutePlace();
 
-    RouteAddress* address();
-    void setAddress(RouteAddress *address);
+    RouteMeAddress* address();
+    void setAddress(RouteMeAddress *address);
 
     RouteCoordinateItem* coordinate();
     void setCoordinate(RouteCoordinateItem *coordinate);
@@ -35,7 +35,7 @@ signals:
 private:
     QGeoPlace m_place;
 
-    RouteAddress *m_address;
+    RouteMeAddress *m_address;
     RouteCoordinateItem *m_coordinate;
 };
 

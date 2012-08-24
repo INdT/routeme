@@ -1,57 +1,57 @@
-#include "routeaddress.h"
+#include "routemeaddress.h"
 
-RouteAddress::RouteAddress(QObject *parent)
+RouteMeAddress::RouteMeAddress(QObject *parent)
     : QObject(parent)
 {
 }
 
-RouteAddress::~RouteAddress()
+RouteMeAddress::~RouteMeAddress()
 {
 }
 
-void RouteAddress::setCity(const QString &city)
+void RouteMeAddress::setCity(const QString &city)
 {
     m_city = city;
     emit cityChanged();
 }
 
-void RouteAddress::setCountry(const QString &country)
+void RouteMeAddress::setCountry(const QString &country)
 {
     m_country = country;
     emit countryChanged();
 }
 
-void RouteAddress::setDistrict(const QString &district)
+void RouteMeAddress::setDistrict(const QString &district)
 {
     m_district = district;
     emit districtChanged();
 }
 
-void RouteAddress::setPostcode(const QString &postcode)
+void RouteMeAddress::setPostcode(const QString &postcode)
 {
     m_postcode = postcode;
     emit postcodeChanged();
 }
 
-void RouteAddress::setState(const QString &state)
+void RouteMeAddress::setState(const QString &state)
 {
     m_state = state;
     emit stateChanged();
 }
 
-void RouteAddress::setStreet(const QString &street)
+void RouteMeAddress::setStreet(const QString &street)
 {
     m_street = street;
     emit streetChanged();
 }
 
-void RouteAddress::setGeoAddress(const QGeoAddress &address)
+void RouteMeAddress::setGeoAddress(const QGeoAddress &address)
 {
     m_address = address;
     fillAddress();
 }
 
-void RouteAddress::fillAddress()
+void RouteMeAddress::fillAddress()
 {
     setCity(m_address.city());
     setCountry(m_address.country());
