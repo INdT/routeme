@@ -62,7 +62,7 @@ void RoutePositionInfo::stopUpdates()
     m_infoSourceCellId->stopUpdates();
 }
 
-RouteCoordinateItem* RoutePositionInfo::currentCoordinate()
+RouteMeCoordinate* RoutePositionInfo::currentCoordinate()
 {
     return &m_currentCoordinate;
 }

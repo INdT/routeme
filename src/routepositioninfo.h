@@ -6,20 +6,20 @@
 #include <qgeocoordinate.h>
 #include <qgeopositioninfosource.h>
 
-#include "routecoordinateitem.h"
+#include "routemecoordinate.h"
 
 using namespace QtMobility;
 
 class RoutePositionInfo : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(RouteCoordinateItem* currentCoordinate READ currentCoordinate NOTIFY currentCoordinateAvailable)
+    Q_PROPERTY(RouteMeCoordinate* currentCoordinate READ currentCoordinate NOTIFY currentCoordinateAvailable)
 
 public:
     RoutePositionInfo(QObject *parent = 0);
     ~RoutePositionInfo();
 
-    RouteCoordinateItem* currentCoordinate();
+    RouteMeCoordinate* currentCoordinate();
 
     Q_INVOKABLE void startUpdates();
     Q_INVOKABLE void stopUpdates();
@@ -36,7 +36,7 @@ private:
     QGeoPositionInfoSource *m_infoSourceSatellite;
     QGeoPositionInfoSource *m_infoSourceCellId;
 
-    RouteCoordinateItem m_currentCoordinate;
+    RouteMeCoordinate m_currentCoordinate;
 };
 
 #endif

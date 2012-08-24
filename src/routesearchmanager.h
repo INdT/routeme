@@ -5,7 +5,7 @@
 #include <qgeosearchreply.h>
 #include <qgeosearchmanager.h>
 
-class RouteCoordinateItem;
+class RouteMeCoordinate;
 class RoutePlace;
 
 using namespace QtMobility;
@@ -13,15 +13,15 @@ using namespace QtMobility;
 class RouteSearchManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(RouteCoordinateItem* coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged)
+    Q_PROPERTY(RouteMeCoordinate* coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged)
     Q_PROPERTY(RoutePlace* place READ place NOTIFY placeAvailable)
 
 public:
     RouteSearchManager(QObject *parent = 0);
     ~RouteSearchManager();
 
-    RouteCoordinateItem* coordinate();
-    void setCoordinate(RouteCoordinateItem* coordinate);
+    RouteMeCoordinate* coordinate();
+    void setCoordinate(RouteMeCoordinate* coordinate);
 
     RoutePlace* place();
 
@@ -38,7 +38,7 @@ private:
     void init();
 
     QGeoSearchManager *m_searchManager;
-    RouteCoordinateItem *m_coordinate;
+    RouteMeCoordinate *m_coordinate;
     RoutePlace *m_place;
 };
 

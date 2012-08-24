@@ -1,6 +1,6 @@
 #include "routesearchmanager.h"
 #include "serviceprovider.h"
-#include "routecoordinateitem.h"
+#include "routemecoordinate.h"
 #include "routeplace.h"
 
 RouteSearchManager::RouteSearchManager(QObject *parent)
@@ -21,12 +21,12 @@ void RouteSearchManager::init()
     m_searchManager = ServiceProvider::instance()->searchManager();
 }
 
-RouteCoordinateItem* RouteSearchManager::coordinate()
+RouteMeCoordinate* RouteSearchManager::coordinate()
 {
     return m_coordinate;
 }
 
-void RouteSearchManager::setCoordinate(RouteCoordinateItem* coordinate)
+void RouteSearchManager::setCoordinate(RouteMeCoordinate* coordinate)
 {
     m_coordinate = coordinate;
 

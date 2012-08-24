@@ -6,7 +6,7 @@
 #include <qgeoroutingmanager.h>
 #include <qgeoroutereply.h>
 
-#include "routecoordinateitem.h"
+#include "routemecoordinate.h"
 #include "routemapobject.h"
 
 using namespace QtMobility;
@@ -15,19 +15,19 @@ class RoutingManager : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(RouteCoordinateItem* origin READ origin WRITE setOrigin NOTIFY originChanged)
-    Q_PROPERTY(RouteCoordinateItem* destination READ destination WRITE setDestination NOTIFY destinationChanged)
+    Q_PROPERTY(RouteMeCoordinate* origin READ origin WRITE setOrigin NOTIFY originChanged)
+    Q_PROPERTY(RouteMeCoordinate* destination READ destination WRITE setDestination NOTIFY destinationChanged)
     Q_PROPERTY(RouteMapObject* route READ route NOTIFY routeAvailable)
 
 public:
     RoutingManager(QObject *parent = 0);
     ~RoutingManager();
 
-    RouteCoordinateItem* origin();
-    void setOrigin(RouteCoordinateItem *origin);
+    RouteMeCoordinate* origin();
+    void setOrigin(RouteMeCoordinate *origin);
 
-    RouteCoordinateItem* destination();
-    void setDestination(RouteCoordinateItem *destination);
+    RouteMeCoordinate* destination();
+    void setDestination(RouteMeCoordinate *destination);
 
     RouteMapObject* route();
 
@@ -47,8 +47,8 @@ private:
 
     QGeoRoutingManager *m_routingManager;
 
-    RouteCoordinateItem *m_origin;
-    RouteCoordinateItem *m_destination;
+    RouteMeCoordinate *m_origin;
+    RouteMeCoordinate *m_destination;
     RouteMapObject *m_routeObject;
 };
 

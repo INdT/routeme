@@ -1,5 +1,5 @@
 #include "routeplace.h"
-#include "routecoordinateitem.h"
+#include "routemecoordinate.h"
 #include "routemeaddress.h"
 
 RoutePlace::RoutePlace(QObject *parent)
@@ -13,12 +13,12 @@ RoutePlace::~RoutePlace()
 {
 }
 
-RouteCoordinateItem* RoutePlace::coordinate()
+RouteMeCoordinate* RoutePlace::coordinate()
 {
     return m_coordinate;
 }
 
-void RoutePlace::setCoordinate(RouteCoordinateItem *coordinate)
+void RoutePlace::setCoordinate(RouteMeCoordinate *coordinate)
 {
     m_coordinate = coordinate;
     emit coordinateChanged();

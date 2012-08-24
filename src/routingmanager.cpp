@@ -32,23 +32,23 @@ void RoutingManager::init()
             this, SLOT(onCalculateRouteFinished(QGeoRouteReply *)));
 }
 
-RouteCoordinateItem* RoutingManager::origin()
+RouteMeCoordinate* RoutingManager::origin()
 {
     return m_origin;
 }
 
-void RoutingManager::setOrigin(RouteCoordinateItem *origin)
+void RoutingManager::setOrigin(RouteMeCoordinate *origin)
 {
     m_origin = origin;
     emit originChanged();
 }
 
-RouteCoordinateItem* RoutingManager::destination()
+RouteMeCoordinate* RoutingManager::destination()
 {
     return m_destination;
 }
 
-void RoutingManager::setDestination(RouteCoordinateItem *destination)
+void RoutingManager::setDestination(RouteMeCoordinate *destination)
 {
     m_destination = destination;
     emit destinationChanged();

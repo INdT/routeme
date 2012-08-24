@@ -24,12 +24,12 @@ void RouteMapItem::init()
     m_map = new RouteGeoMap(m_mapManager, this);
 }
 
-RouteCoordinateItem* RouteMapItem::coordinate()
+RouteMeCoordinate* RouteMapItem::coordinate()
 {
     return m_coordinate;
 }
 
-void RouteMapItem::setCoordinate(RouteCoordinateItem *coordinate)
+void RouteMapItem::setCoordinate(RouteMeCoordinate *coordinate)
 {
     m_coordinate = coordinate;
 
