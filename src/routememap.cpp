@@ -70,12 +70,12 @@ void RouteMeMap::componentComplete()
     m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
 }
 
-RouteMapObject* RouteMeMap::route()
+RouteMeRouteMapObject* RouteMeMap::route()
 {
     return m_route;
 }
 
-void RouteMeMap::setRoute(RouteMapObject *route)
+void RouteMeMap::setRoute(RouteMeRouteMapObject *route)
 {
     m_route = route;
     m_map->addMapObject(m_route->geoMapRouteObject());

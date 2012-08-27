@@ -90,7 +90,7 @@ void RouteMeRouteManager::onCalculateRouteFinished(QGeoRouteReply *reply)
 
         routeObject->setDetailLevel(8);
 
-        m_routeObject = new RouteMapObject;
+        m_routeObject = new RouteMeRouteMapObject;
         m_routeObject->setGeoMapRouteObject(routeObject);
         emit routeAvailable();
     }
@@ -98,7 +98,7 @@ void RouteMeRouteManager::onCalculateRouteFinished(QGeoRouteReply *reply)
     reply->deleteLater();
 }
 
-RouteMapObject* RouteMeRouteManager::route()
+RouteMeRouteMapObject* RouteMeRouteManager::route()
 {
     return m_routeObject;
 }

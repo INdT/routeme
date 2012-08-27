@@ -3,7 +3,7 @@
 #include "routemecontroller.h"
 #include "routemecoordinate.h"
 #include "routememap.h"
-#include "routemapobject.h"
+#include "routemeroutemapobject.h"
 #include "routeme.h"
 #include "routemeserver.h"
 #include "routemeplace.h"
@@ -30,7 +30,7 @@ RouteMe::RouteMe(QWidget *parent)
 
     qmlRegisterType<RouteMeCoordinate>("com.routeme.types", 1, 0, "RouteCoordinate");
     qmlRegisterType<RouteMePositionInfo>("com.routeme.types", 1, 0, "RoutePositionInfo");
-    qmlRegisterType<RouteMapObject>("com.routeme.types", 1, 0, "Route");
+    qmlRegisterType<RouteMeRouteMapObject>("com.routeme.types", 1, 0, "Route");
     qmlRegisterType<RouteMeRouteManager>("com.routeme.types", 1, 0, "RouteManager");
     qmlRegisterType<RouteMeMap>("com.routeme.types", 1, 0, "RouteMap");
     qmlRegisterType<RouteMeAddress>("com.routeme.types", 1, 0, "RouteAddress");

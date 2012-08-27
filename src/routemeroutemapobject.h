@@ -1,5 +1,5 @@
-#ifndef ROUTEMAPOBJECT_H
-#define ROUTEMAPOBJECT_H
+#ifndef ROUTEMEROUTEMAPOBJECT_H
+#define ROUTEMEROUTEMAPOBJECT_H
 
 #include <QtCore/QObject>
 
@@ -7,13 +7,13 @@
 
 using namespace QtMobility;
 
-class RouteMapObject : public QObject
+class RouteMeRouteMapObject : public QObject
 {
     Q_OBJECT
 
 public:
-    RouteMapObject(QObject *parent = 0);
-    ~RouteMapObject();
+    RouteMeRouteMapObject(QObject *parent = 0);
+    ~RouteMeRouteMapObject();
 
     void setGeoMapRouteObject(QGeoMapRouteObject *route);
     QGeoMapRouteObject* geoMapRouteObject();

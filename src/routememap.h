@@ -8,7 +8,7 @@
 #include <qgeocoordinate.h>
 
 #include "routemecoordinate.h"
-#include "routemapobject.h"
+#include "routemeroutemapobject.h"
 
 class RouteMeGraphicsGeoMap;
 
@@ -21,7 +21,7 @@ class RouteMeMap : public QDeclarativeItem
     Q_PROPERTY(RouteMeCoordinate* coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged)
     Q_PROPERTY(qreal zoomLevel READ zoomLevel WRITE setZoomLevel NOTIFY zoomLevelChanged)
     Q_PROPERTY(QString providerName READ providerName WRITE setProviderName NOTIFY providerNameChanged)
-    Q_PROPERTY(RouteMapObject* route READ route WRITE setRoute NOTIFY routeChanged)
+    Q_PROPERTY(RouteMeRouteMapObject* route READ route WRITE setRoute NOTIFY routeChanged)
 
 public:
     RouteMeMap(QDeclarativeItem *parent = 0);
@@ -36,8 +36,8 @@ public:
     QString providerName() const { return m_providerName; }
     void setProviderName(const QString &providerName);
 
-    RouteMapObject* route();
-    void setRoute(RouteMapObject* route);
+    RouteMeRouteMapObject* route();
+    void setRoute(RouteMeRouteMapObject* route);
 
     void componentComplete();
 
@@ -55,7 +55,7 @@ private:
     qreal m_zoomLevel;
     QString m_providerName;
     RouteMeCoordinate *m_coordinate;
-    RouteMapObject *m_route;
+    RouteMeRouteMapObject *m_route;
 };
 
 #endif
