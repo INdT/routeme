@@ -1,5 +1,5 @@
-#ifndef ROUTINGMANAGER_H
-#define ROUTINGMANAGER_H
+#ifndef ROUTEMEROUTEMANAGER_H
+#define ROUTEMEROUTEMANAGER_H
 
 #include <QtCore/QObject>
 
@@ -11,7 +11,7 @@
 
 using namespace QtMobility;
 
-class RoutingManager : public QObject
+class RouteMeRouteManager : public QObject
 {
     Q_OBJECT
 
@@ -20,8 +20,8 @@ class RoutingManager : public QObject
     Q_PROPERTY(RouteMapObject* route READ route NOTIFY routeAvailable)
 
 public:
-    RoutingManager(QObject *parent = 0);
-    ~RoutingManager();
+    RouteMeRouteManager(QObject *parent = 0);
+    ~RouteMeRouteManager();
 
     RouteMeCoordinate* origin();
     void setOrigin(RouteMeCoordinate *origin);

@@ -1,4 +1,4 @@
-#include "routingmanager.h"
+#include "routemeroutemanager.h"
 #include "serviceprovider.h"
 
 #include <qgeorouterequest.h>
@@ -7,7 +7,7 @@
 #include <QPen>
 #include <QBrush>
 
-RoutingManager::RoutingManager(QObject *parent)
+RouteMeRouteManager::RouteMeRouteManager(QObject *parent)
     : QObject(parent)
     , m_routingManager(0)
     , m_origin(0)
@@ -17,7 +17,7 @@ RoutingManager::RoutingManager(QObject *parent)
     init();
 }
 
-RoutingManager::~RoutingManager()
+RouteMeRouteManager::~RouteMeRouteManager()
 {
     m_routingManager->deleteLater();
     m_origin->deleteLater();
@@ -25,36 +25,36 @@ RoutingManager::~RoutingManager()
     m_routeObject->deleteLater();
 }
 
-void RoutingManager::init()
+void RouteMeRouteManager::init()
 {
     m_routingManager = ServiceProvider::instance()->routingManager();
     connect(m_routingManager, SIGNAL(finished(QGeoRouteReply *)),
             this, SLOT(onCalculateRouteFinished(QGeoRouteReply *)));
 }
 
-RouteMeCoordinate* RoutingManager::origin()
+RouteMeCoordinate* RouteMeRouteManager::origin()
 {
     return m_origin;
 }
 
-void RoutingManager::setOrigin(RouteMeCoordinate *origin)
+void RouteMeRouteManager::setOrigin(RouteMeCoordinate *origin)
 {
     m_origin = origin;
     emit originChanged();
 }
 
-RouteMeCoordinate* RoutingManager::destination()
+RouteMeCoordinate* RouteMeRouteManager::destination()
 {
     return m_destination;
 }
 
-void RoutingManager::setDestination(RouteMeCoordinate *destination)
+void RouteMeRouteManager::setDestination(RouteMeCoordinate *destination)
 {
     m_destination = destination;
     emit destinationChanged();
 }
 
-void RoutingManager::calculateRoute()
+void RouteMeRouteManager::calculateRoute()
 {
     if (!m_origin || !m_destination)
         return;
@@ -74,7 +74,7 @@ void RoutingManager::calculateRoute()
     m_routingManager->calculateRoute(routeRequest);
 }
 
-void RoutingManager::onCalculateRouteFinished(QGeoRouteReply *reply)
+void RouteMeRouteManager::onCalculateRouteFinished(QGeoRouteReply *reply)
 {
     if (!reply)
         return;
@@ -98,7 +98,7 @@ void RoutingManager::onCalculateRouteFinished(QGeoRouteReply *reply)
     reply->deleteLater();
 }
 
-RouteMapObject* RoutingManager::route()
+RouteMapObject* RouteMeRouteManager::route()
 {
     return m_routeObject;
 }

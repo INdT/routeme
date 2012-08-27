@@ -21,7 +21,7 @@ HEADERS += \
     routemepositioninfo.h \
     routemecoordinate.h \
     routemapobject.h \
-    routingmanager.h \
+    routemeroutemanager.h \
     routemecontroller.h \
     routemeaddress.h \
     routemeplace.h \
@@ -36,7 +36,7 @@ SOURCES += \
     routemepositioninfo.cpp \
     routemecoordinate.cpp \
     routemapobject.cpp \
-    routingmanager.cpp \
+    routemeroutemanager.cpp \
     routemecontroller.cpp \
     routemeaddress.cpp \
     routemeplace.cpp \
