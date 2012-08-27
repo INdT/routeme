@@ -10,7 +10,7 @@
 #include "routemecoordinate.h"
 #include "routemapobject.h"
 
-class RouteGeoMap;
+class RouteMeGraphicsGeoMap;
 
 using namespace QtMobility;
 
@@ -50,7 +50,7 @@ signals:
 private:
     void init();
 
-    RouteGeoMap *m_map;
+    RouteMeGraphicsGeoMap *m_map;
     QGeoMappingManager *m_mapManager;
     qreal m_zoomLevel;
     QString m_providerName;

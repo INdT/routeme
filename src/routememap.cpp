@@ -1,4 +1,4 @@
-#include "routegeomap.h"
+#include "routemegraphicsgeomap.h"
 #include "routememap.h"
 #include "serviceprovider.h"
 
@@ -21,7 +21,7 @@ RouteMeMap::~RouteMeMap()
 void RouteMeMap::init()
 {
     m_mapManager = ServiceProvider::instance()->mappingManager();
-    m_map = new RouteGeoMap(m_mapManager, this);
+    m_map = new RouteMeGraphicsGeoMap(m_mapManager, this);
 }
 
 RouteMeCoordinate* RouteMeMap::coordinate()

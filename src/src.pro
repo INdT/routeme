@@ -13,7 +13,7 @@ CONFIG += mobility
 MOBILITY += location
 
 HEADERS += \
-    routegeomap.h \
+    routemegraphicsgeomap.h \
     routememap.h \
     routeme.h \
     routemeserver.h \
@@ -28,7 +28,7 @@ HEADERS += \
     routemesearchmanager.h
 
 SOURCES += \
-    routegeomap.cpp \
+    routemegraphicsgeomap.cpp \
     routememap.cpp \
     routeme.cpp \
     routemeserver.cpp \

@@ -1,4 +1,4 @@
-#include "routegeomap.h"
+#include "routemegraphicsgeomap.h"
 
 #include <QtCore/QParallelAnimationGroup>
 #include <QtCore/QPropertyAnimation>
@@ -7,7 +7,7 @@
 
 #include "qgeocoordinate.h"
 
-RouteGeoMap::RouteGeoMap(QGeoMappingManager *manager,  QGraphicsItem *parent)
+RouteMeGraphicsGeoMap::RouteMeGraphicsGeoMap(QGeoMappingManager *manager,  QGraphicsItem *parent)
     : QGraphicsGeoMap(manager, parent)
     , panActive(false)
     , markerPressed(false)
@@ -16,35 +16,35 @@ RouteGeoMap::RouteGeoMap(QGeoMappingManager *manager,  QGraphicsItem *parent)
     setFocus();
 }
 
-RouteGeoMap::~RouteGeoMap()
+RouteMeGraphicsGeoMap::~RouteMeGraphicsGeoMap()
 {
 }
 
-double RouteGeoMap::centerLatitude() const
+double RouteMeGraphicsGeoMap::centerLatitude() const
 {
     return center().latitude();
 }
 
-double RouteGeoMap::centerLongitude() const
+double RouteMeGraphicsGeoMap::centerLongitude() const
 {
     return center().longitude();
 }
 
-void RouteGeoMap::setCenterLatitude(qreal lat)
+void RouteMeGraphicsGeoMap::setCenterLatitude(qreal lat)
 {
     QGeoCoordinate c = center();
     c.setLatitude(lat);
     setCenter(c);
 }
 
-void RouteGeoMap::setCenterLongitude(qreal lon)
+void RouteMeGraphicsGeoMap::setCenterLongitude(qreal lon)
 {
     QGeoCoordinate c = center();
     c.setLongitude(lon);
     setCenter(c);
 }
 
-void RouteGeoMap::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void RouteMeGraphicsGeoMap::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     panActive = true;
     markerPressed = false;
@@ -58,7 +58,7 @@ void RouteGeoMap::mousePressEvent(QGraphicsSceneMouseEvent *event)
     event->accept();
 }
 
-void RouteGeoMap::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void RouteMeGraphicsGeoMap::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     panActive = false;
 
@@ -76,7 +76,7 @@ void RouteGeoMap::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     event->accept();
 }
 
-void RouteGeoMap::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void RouteMeGraphicsGeoMap::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if (panActive) {
         QPointF delta = event->lastPos() - event->pos();
@@ -87,7 +87,7 @@ void RouteGeoMap::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     event->accept();
 }
 
-void RouteGeoMap::wheelEvent(QGraphicsSceneWheelEvent *event)
+void RouteMeGraphicsGeoMap::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
     // pan our current point to the centre, zoom, then pan back
 
@@ -108,7 +108,7 @@ void RouteGeoMap::wheelEvent(QGraphicsSceneWheelEvent *event)
     event->accept();
 }
 
-void RouteGeoMap::keyPressEvent(QKeyEvent *event)
+void RouteMeGraphicsGeoMap::keyPressEvent(QKeyEvent *event)
 {
     QGeoCoordinate center;
     QPropertyAnimation *anim;

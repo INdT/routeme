@@ -1,19 +1,19 @@
-#ifndef ROUTEGEOMAP_H
-#define ROUTEGEOMAP_H
+#ifndef ROUTEMEGRAPHICSGEOMAP_H
+#define ROUTEMEGRAPHICSGEOMAP_H
 
 #include "qgraphicsgeomap.h"
 
 using namespace QtMobility;
 
-class RouteGeoMap : public QGraphicsGeoMap
+class RouteMeGraphicsGeoMap : public QGraphicsGeoMap
 {
     Q_OBJECT
     Q_PROPERTY(double centerLatitude READ centerLatitude WRITE setCenterLatitude)
     Q_PROPERTY(double centerLongitude READ centerLongitude WRITE setCenterLongitude)
 
 public:
-    RouteGeoMap(QGeoMappingManager *manager, QGraphicsItem *parent = 0);
-    ~RouteGeoMap();
+    RouteMeGraphicsGeoMap(QGeoMappingManager *manager, QGraphicsItem *parent = 0);
+    ~RouteMeGraphicsGeoMap();
 
     double centerLatitude() const;
     double centerLongitude() const;
