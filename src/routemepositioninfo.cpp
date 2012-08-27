@@ -1,7 +1,7 @@
-#include "routepositioninfo.h"
+#include "routemepositioninfo.h"
 #include "serviceprovider.h"
 
-RoutePositionInfo::RoutePositionInfo(QObject *parent)
+RouteMePositionInfo::RouteMePositionInfo(QObject *parent)
     : QObject(parent)
     , m_infoSourceSatellite(0)
     , m_infoSourceCellId(0)
@@ -9,11 +9,11 @@ RoutePositionInfo::RoutePositionInfo(QObject *parent)
     init();
 }
 
-RoutePositionInfo::~RoutePositionInfo()
+RouteMePositionInfo::~RouteMePositionInfo()
 {
 }
 
-void RoutePositionInfo::init()
+void RouteMePositionInfo::init()
 {
     m_infoSourceSatellite = QGeoPositionInfoSource::createDefaultSource(this);
     if (m_infoSourceSatellite) {
@@ -31,7 +31,7 @@ void RoutePositionInfo::init()
 
 }
 
-void RoutePositionInfo::onPositionUpdated(const QGeoPositionInfo &info)
+void RouteMePositionInfo::onPositionUpdated(const QGeoPositionInfo &info)
 {
     if (!info.isValid() || !info.coordinate().isValid())
         return;
@@ -44,7 +44,7 @@ void RoutePositionInfo::onPositionUpdated(const QGeoPositionInfo &info)
     stopUpdates();
 }
 
-void RoutePositionInfo::startUpdates()
+void RouteMePositionInfo::startUpdates()
 {
     if (!m_infoSourceSatellite || !m_infoSourceCellId)
         return;
@@ -53,7 +53,7 @@ void RoutePositionInfo::startUpdates()
     m_infoSourceCellId->startUpdates();
 }
 
-void RoutePositionInfo::stopUpdates()
+void RouteMePositionInfo::stopUpdates()
 {
     if (!m_infoSourceSatellite || !m_infoSourceCellId)
         return;
@@ -62,7 +62,7 @@ void RoutePositionInfo::stopUpdates()
     m_infoSourceCellId->stopUpdates();
 }
 
-RouteMeCoordinate* RoutePositionInfo::currentCoordinate()
+RouteMeCoordinate* RouteMePositionInfo::currentCoordinate()
 {
     return &m_currentCoordinate;
 }

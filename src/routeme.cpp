@@ -7,7 +7,7 @@
 #include "routeme.h"
 #include "routemeserver.h"
 #include "routemeplace.h"
-#include "routepositioninfo.h"
+#include "routemepositioninfo.h"
 #include "routesearchmanager.h"
 #include "routingmanager.h"
 
@@ -29,7 +29,7 @@ RouteMe::RouteMe(QWidget *parent)
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 
     qmlRegisterType<RouteMeCoordinate>("com.routeme.types", 1, 0, "RouteCoordinate");
-    qmlRegisterType<RoutePositionInfo>("com.routeme.types", 1, 0, "RoutePositionInfo");
+    qmlRegisterType<RouteMePositionInfo>("com.routeme.types", 1, 0, "RoutePositionInfo");
     qmlRegisterType<RouteMapObject>("com.routeme.types", 1, 0, "Route");
     qmlRegisterType<RoutingManager>("com.routeme.types", 1, 0, "RouteManager");
     qmlRegisterType<RouteMeMap>("com.routeme.types", 1, 0, "RouteMap");

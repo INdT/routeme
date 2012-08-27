@@ -1,5 +1,5 @@
-#ifndef ROUTEPOSITIONINFO_H
-#define ROUTEPOSITIONINFO_H
+#ifndef ROUTEMEPOSITIONINFO_H
+#define ROUTEMEPOSITIONINFO_H
 
 #include <QtCore/QObject>
 
@@ -10,14 +10,14 @@
 
 using namespace QtMobility;
 
-class RoutePositionInfo : public QObject
+class RouteMePositionInfo : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(RouteMeCoordinate* currentCoordinate READ currentCoordinate NOTIFY currentCoordinateAvailable)
 
 public:
-    RoutePositionInfo(QObject *parent = 0);
-    ~RoutePositionInfo();
+    RouteMePositionInfo(QObject *parent = 0);
+    ~RouteMePositionInfo();
 
     RouteMeCoordinate* currentCoordinate();
 
