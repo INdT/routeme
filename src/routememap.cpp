@@ -1,8 +1,8 @@
 #include "routegeomap.h"
-#include "routemapitem.h"
+#include "routememap.h"
 #include "serviceprovider.h"
 
-RouteMapItem::RouteMapItem(QDeclarativeItem *parent)
+RouteMeMap::RouteMeMap(QDeclarativeItem *parent)
     : QDeclarativeItem(parent)
     , m_map(0)
     , m_mapManager(0)
@@ -13,23 +13,23 @@ RouteMapItem::RouteMapItem(QDeclarativeItem *parent)
     init();
 }
 
-RouteMapItem::~RouteMapItem()
+RouteMeMap::~RouteMeMap()
 {
     m_mapManager->deleteLater();
 }
 
-void RouteMapItem::init()
+void RouteMeMap::init()
 {
     m_mapManager = ServiceProvider::instance()->mappingManager();
     m_map = new RouteGeoMap(m_mapManager, this);
 }
 
-RouteMeCoordinate* RouteMapItem::coordinate()
+RouteMeCoordinate* RouteMeMap::coordinate()
 {
     return m_coordinate;
 }
 
-void RouteMapItem::setCoordinate(RouteMeCoordinate *coordinate)
+void RouteMeMap::setCoordinate(RouteMeCoordinate *coordinate)
 {
     m_coordinate = coordinate;
 
@@ -39,7 +39,7 @@ void RouteMapItem::setCoordinate(RouteMeCoordinate *coordinate)
     emit coordinateChanged();
 }
 
-void RouteMapItem::setZoomLevel(qreal zoom)
+void RouteMeMap::setZoomLevel(qreal zoom)
 {
     if (zoom < 0)
         return;
@@ -53,7 +53,7 @@ void RouteMapItem::setZoomLevel(qreal zoom)
     emit zoomLevelChanged();
 }
 
-void RouteMapItem::setProviderName(const QString &providerName)
+void RouteMeMap::setProviderName(const QString &providerName)
 {
     if (providerName.isEmpty())
         return;
@@ -65,17 +65,17 @@ void RouteMapItem::setProviderName(const QString &providerName)
     emit providerNameChanged();
 }
 
-void RouteMapItem::componentComplete()
+void RouteMeMap::componentComplete()
 {
     m_map->setGeometry(0, 0, boundingRect().width(), boundingRect().height());
 }
 
-RouteMapObject* RouteMapItem::route()
+RouteMapObject* RouteMeMap::route()
 {
     return m_route;
 }
 
-void RouteMapItem::setRoute(RouteMapObject *route)
+void RouteMeMap::setRoute(RouteMapObject *route)
 {
     m_route = route;
     m_map->addMapObject(m_route->geoMapRouteObject());

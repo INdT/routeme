@@ -1,5 +1,5 @@
-#ifndef ROUTEMAPITEM_H
-#define ROUTEMAPITEM_H
+#ifndef ROUTEMEMAP_H
+#define ROUTEMEMAP_H
 
 #include <QtDeclarative/QDeclarativeItem>
 
@@ -14,7 +14,7 @@ class RouteGeoMap;
 
 using namespace QtMobility;
 
-class RouteMapItem : public QDeclarativeItem
+class RouteMeMap : public QDeclarativeItem
 {
     Q_OBJECT
 
@@ -24,8 +24,8 @@ class RouteMapItem : public QDeclarativeItem
     Q_PROPERTY(RouteMapObject* route READ route WRITE setRoute NOTIFY routeChanged)
 
 public:
-    RouteMapItem(QDeclarativeItem *parent = 0);
-    ~RouteMapItem();
+    RouteMeMap(QDeclarativeItem *parent = 0);
+    ~RouteMeMap();
 
     RouteMeCoordinate* coordinate();
     void setCoordinate(RouteMeCoordinate *coordinate);

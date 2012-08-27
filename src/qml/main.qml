@@ -50,7 +50,7 @@ Window {
         }
     }
 
-    RouteMeMap {
+    RouteMap {
         id: map
         width: 480
         height: 864

@@ -14,7 +14,7 @@ MOBILITY += location
 
 HEADERS += \
     routegeomap.h \
-    routemapitem.h \
+    routememap.h \
     routeme.h \
     routemeserver.h \
     serviceprovider.h \
@@ -29,7 +29,7 @@ HEADERS += \
 
 SOURCES += \
     routegeomap.cpp \
-    routemapitem.cpp \
+    routememap.cpp \
     routeme.cpp \
     routemeserver.cpp \
     serviceprovider.cpp \
