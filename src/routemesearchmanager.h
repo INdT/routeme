@@ -1,5 +1,5 @@
-#ifndef ROUTESEARCHMANAGER_H
-#define ROUTESEARCHMANAGER_H
+#ifndef ROUTEMESEARCHMANAGER_H
+#define ROUTEMESEARCHMANAGER_H
 
 #include <QtCore/QObject>
 #include <qgeosearchreply.h>
@@ -10,15 +10,15 @@ class RouteMePlace;
 
 using namespace QtMobility;
 
-class RouteSearchManager : public QObject
+class RouteMeSearchManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(RouteMeCoordinate* coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged)
     Q_PROPERTY(RouteMePlace* place READ place NOTIFY placeAvailable)
 
 public:
-    RouteSearchManager(QObject *parent = 0);
-    ~RouteSearchManager();
+    RouteMeSearchManager(QObject *parent = 0);
+    ~RouteMeSearchManager();
 
     RouteMeCoordinate* coordinate();
     void setCoordinate(RouteMeCoordinate* coordinate);

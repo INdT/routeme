@@ -1,9 +1,9 @@
-#include "routesearchmanager.h"
+#include "routemesearchmanager.h"
 #include "serviceprovider.h"
 #include "routemecoordinate.h"
 #include "routemeplace.h"
 
-RouteSearchManager::RouteSearchManager(QObject *parent)
+RouteMeSearchManager::RouteMeSearchManager(QObject *parent)
     : QObject(parent)
     , m_searchManager(0)
     , m_coordinate(0)
@@ -12,28 +12,28 @@ RouteSearchManager::RouteSearchManager(QObject *parent)
     init();
 }
 
-RouteSearchManager::~RouteSearchManager()
+RouteMeSearchManager::~RouteMeSearchManager()
 {
 }
 
-void RouteSearchManager::init()
+void RouteMeSearchManager::init()
 {
     m_searchManager = ServiceProvider::instance()->searchManager();
 }
 
-RouteMeCoordinate* RouteSearchManager::coordinate()
+RouteMeCoordinate* RouteMeSearchManager::coordinate()
 {
     return m_coordinate;
 }
 
-void RouteSearchManager::setCoordinate(RouteMeCoordinate* coordinate)
+void RouteMeSearchManager::setCoordinate(RouteMeCoordinate* coordinate)
 {
     m_coordinate = coordinate;
 
     emit coordinateChanged();
 }
 
-void RouteSearchManager::searchPlace()
+void RouteMeSearchManager::searchPlace()
 {
     if (!m_searchManager)
         return;
@@ -49,7 +49,7 @@ void RouteSearchManager::searchPlace()
     connect(reply, SIGNAL(finished()), this, SLOT(onReverseGeocodeFinished()));
 }
 
-void RouteSearchManager::onReverseGeocodeFinished()
+void RouteMeSearchManager::onReverseGeocodeFinished()
 {
     QGeoSearchReply *reply = qobject_cast<QGeoSearchReply *>(sender());
 
@@ -67,7 +67,7 @@ void RouteSearchManager::onReverseGeocodeFinished()
     reply->deleteLater();
 }
 
-RouteMePlace* RouteSearchManager::place()
+RouteMePlace* RouteMeSearchManager::place()
 {
     return m_place;
 }
