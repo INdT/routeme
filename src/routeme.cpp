@@ -6,7 +6,7 @@
 #include "routemapobject.h"
 #include "routeme.h"
 #include "routemeserver.h"
-#include "routeplace.h"
+#include "routemeplace.h"
 #include "routepositioninfo.h"
 #include "routesearchmanager.h"
 #include "routingmanager.h"
@@ -34,7 +34,7 @@ RouteMe::RouteMe(QWidget *parent)
     qmlRegisterType<RoutingManager>("com.routeme.types", 1, 0, "RouteManager");
     qmlRegisterType<RouteMapItem>("com.routeme.types", 1, 0, "RouteMeMap");
     qmlRegisterType<RouteMeAddress>("com.routeme.types", 1, 0, "RouteAddress");
-    qmlRegisterType<RoutePlace>("com.routeme.types", 1, 0, "RoutePlace");
+    qmlRegisterType<RouteMePlace>("com.routeme.types", 1, 0, "RoutePlace");
     qmlRegisterType<RouteSearchManager>("com.routeme.types", 1, 0, "RouteSearchManager");
 
     m_view->setSource(QUrl("qrc:/qml/main.qml"));

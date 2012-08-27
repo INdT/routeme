@@ -1,7 +1,7 @@
 #include "routesearchmanager.h"
 #include "serviceprovider.h"
 #include "routemecoordinate.h"
-#include "routeplace.h"
+#include "routemeplace.h"
 
 RouteSearchManager::RouteSearchManager(QObject *parent)
     : QObject(parent)
@@ -58,7 +58,7 @@ void RouteSearchManager::onReverseGeocodeFinished()
         places = reply->places();
 
     if (!places.isEmpty()) {
-        m_place = new RoutePlace;
+        m_place = new RouteMePlace;
         m_place->setCoordinate(m_coordinate);
         m_place->setGeoPlace(places.at(0));
     }
@@ -67,7 +67,7 @@ void RouteSearchManager::onReverseGeocodeFinished()
     reply->deleteLater();
 }
 
-RoutePlace* RouteSearchManager::place()
+RouteMePlace* RouteSearchManager::place()
 {
     return m_place;
 }

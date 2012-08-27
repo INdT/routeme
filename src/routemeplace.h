@@ -1,5 +1,5 @@
-#ifndef ROUTEPLACE_H
-#define ROUTEPLACE_H
+#ifndef ROUTEMEPLACE_H
+#define ROUTEMEPLACE_H
 
 #include <QtCore/QObject>
 
@@ -10,15 +10,15 @@ class RouteMeCoordinate;
 
 using namespace QtMobility;
 
-class RoutePlace : public QObject
+class RouteMePlace : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(RouteMeAddress* address READ address WRITE setAddress NOTIFY addressChanged)
     Q_PROPERTY(RouteMeCoordinate* coordinate READ coordinate WRITE setCoordinate NOTIFY coordinateChanged)
 
 public:
-    RoutePlace(QObject *parent = 0);
-    ~RoutePlace();
+    RouteMePlace(QObject *parent = 0);
+    ~RouteMePlace();
 
     RouteMeAddress* address();
     void setAddress(RouteMeAddress *address);

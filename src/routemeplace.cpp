@@ -1,41 +1,41 @@
-#include "routeplace.h"
+#include "routemeplace.h"
 #include "routemecoordinate.h"
 #include "routemeaddress.h"
 
-RoutePlace::RoutePlace(QObject *parent)
+RouteMePlace::RouteMePlace(QObject *parent)
     : QObject(parent)
     , m_address(0)
     , m_coordinate(0)
 {
 }
 
-RoutePlace::~RoutePlace()
+RouteMePlace::~RouteMePlace()
 {
 }
 
-RouteMeCoordinate* RoutePlace::coordinate()
+RouteMeCoordinate* RouteMePlace::coordinate()
 {
     return m_coordinate;
 }
 
-void RoutePlace::setCoordinate(RouteMeCoordinate *coordinate)
+void RouteMePlace::setCoordinate(RouteMeCoordinate *coordinate)
 {
     m_coordinate = coordinate;
     emit coordinateChanged();
 }
 
-RouteMeAddress* RoutePlace::address()
+RouteMeAddress* RouteMePlace::address()
 {
     return m_address;
 }
 
-void RoutePlace::setAddress(RouteMeAddress* address)
+void RouteMePlace::setAddress(RouteMeAddress* address)
 {
     m_address = address;
     emit addressChanged();
 }
 
-void RoutePlace::setGeoPlace(const QGeoPlace &place)
+void RouteMePlace::setGeoPlace(const QGeoPlace &place)
 {
     m_place = place;
     m_address = new RouteMeAddress;

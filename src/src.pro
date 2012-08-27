@@ -24,7 +24,7 @@ HEADERS += \
     routingmanager.h \
     routemecontroller.h \
     routemeaddress.h \
-    routeplace.h \
+    routemeplace.h \
     routesearchmanager.h
 
 SOURCES += \
@@ -39,7 +39,7 @@ SOURCES += \
     routingmanager.cpp \
     routemecontroller.cpp \
     routemeaddress.cpp \
-    routeplace.cpp \
+    routemeplace.cpp \
     routesearchmanager.cpp \
     main.cpp
 
