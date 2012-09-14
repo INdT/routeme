@@ -5,5 +5,7 @@
         <file>qml/RouteMeContent.qml</file>
         <file>qml/RouteMeAddressBook.qml</file>
         <file>qml/RouteMeAddressContent.qml</file>
+
+        <file>qml/help_icon.png</file>
     </qresource>
 </RCC>
