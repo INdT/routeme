@@ -14,6 +14,9 @@ public:
 
     void init();
 
+    Q_INVOKABLE void sendMyCurrentLocation(const QString &number, const QString &message);
+    Q_INVOKABLE bool isContactsAvailable();
+
 private:
     RouteMeServer *m_server;
 };
