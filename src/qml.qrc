@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>qml/main.qml</file>
         <file>qml/RouteMePage.qml</file>
+        <file>qml/RouteMeContent.qml</file>
     </qresource>
 </RCC>
