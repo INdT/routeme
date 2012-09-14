@@ -3,5 +3,6 @@
         <file>qml/main.qml</file>
         <file>qml/RouteMePage.qml</file>
         <file>qml/RouteMeContent.qml</file>
+        <file>qml/RouteMeAddressBook.qml</file>
     </qresource>
 </RCC>
