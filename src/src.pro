@@ -10,7 +10,9 @@ INCLUDEPATH = .
 DESTDIR = ../
 
 CONFIG += mobility
-MOBILITY += location
+MOBILITY += location messaging contacts
+
+CONFIG += qdeclarative-boostable shareuiinterface-maemo-meegotouch meegotouchevents
 
 HEADERS += \
     routemegraphicsgeomap.h \
