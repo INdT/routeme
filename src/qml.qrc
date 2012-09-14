@@ -1,6 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
+        <file>qml/RoutemeToolbar.qml</file>
+        <file>qml/MainWindow.qml</file>
         <file>qml/RouteMePage.qml</file>
         <file>qml/RouteMeContent.qml</file>
         <file>qml/RouteMeAddressBook.qml</file>

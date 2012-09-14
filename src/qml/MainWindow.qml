@@ -1,21 +1,29 @@
 import QtQuick 1.0
 import com.routeme.types 1.0
-import Qt.labs.components.native 1.0
+import com.nokia.meego 1.0
 
-Window {
-    id: main
+Page {
+    id: mainwindow
 
-    RouteManager {
-        id: manager
+    property alias zoomLevel: map.zoomLevel
 
-        //XXX Just for tests purpose
-        destination: RouteCoordinate {
-            latitude: -3.135661
-            longitude: -59.992884
+    tools: rootToolbar
+
+    orientationLock: PageOrientation.LockPortrait
+
+    RoutePositionInfo {
+        id: positionInfo
+
+        onCurrentCoordinateAvailable: {
+            map.coordinate = currentCoordinate
+            positionInfo.stopUpdates()
+
+            searchManager.coordinate = currentCoordinate
+            searchManager.searchPlace()
         }
 
-        onRouteAvailable: {
-            map.route = manager.route
+        Component.onCompleted: {
+            positionInfo.startUpdates()
         }
     }
 
@@ -23,59 +31,27 @@ Window {
         id: searchManager
 
         onPlaceAvailable: {
-            console.log("### state:  "+place.address.state)
-            console.log("### city:  "+place.address.city)
-            console.log("### street:  "+place.address.street)
-            console.log("### postcode:  "+place.address.postcode)
-            console.log("### latitude:  "+place.coordinate.latitude)
-            console.log("### longitude:  "+place.coordinate.longitude)
-        }
-    }
-
-    RoutePositionInfo {
-        id: positionInfo
-
-        onCurrentCoordinateAvailable: {
-            map.coordinate = currentCoordinate
-            manager.origin = currentCoordinate
-            manager.calculateRoute()
-            searchManager.coordinate = currentCoordinate
-            searchManager.searchPlace()
-
-            stopUpdates()
-        }
-
-        Component.onCompleted: {
-            startUpdates();
+            mainwindow.tools.children[1].enabled = true
+            rootWindow.address = "Address: "
+            rootWindow.address += "\n"
+            rootWindow.address += "City: " + place.address.city
+            rootWindow.address += "\n"
+            rootWindow.address += "Street: " + place.address.street
+            rootWindow.address += "\n"
+            rootWindow.address += "Postcode: " + place.address.postcode
+            rootWindow.address += "\n"
+            rootWindow.address += "Latitude: " + place.coordinate.latitude
+            rootWindow.address += "\n"
+            rootWindow.address += "Longitude: " + place.coordinate.longitude
         }
     }
 
     RouteMap {
         id: map
+
+        visible: pageStack.busy ? false : true
         width: 480
         height: 864
         zoomLevel: 13
-    }
-
-    RoutemeToolbar {
-        id: mainToolbar
-        anchors.bottom: map.bottom
-
-        onZoomIn: {
-            map.zoomLevel += 1
-        }
-
-        onZoomOut: {
-            map.zoomLevel -= 1
-        }
-
-        onRouteMe: {
-            //TODO it might send the current location as sms
-            console.log("RouteMe: Sending your current location...")
-        }
-    }
-
-    Page {
-        orientationLock: PageOrientation.LockPortrait
     }
 }
