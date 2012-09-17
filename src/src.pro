@@ -49,7 +49,7 @@ RESOURCES += qml.qrc
 
 contains(MEEGO_EDITION, harmattan) {
     DEFINES += MEEGO_EDITION_HARMATTAN
-    target.path = /opt/src/bin
+    target.path = /opt/routeme/bin
 }
 
 INSTALLS += target
