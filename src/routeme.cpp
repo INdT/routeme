@@ -1,15 +1,16 @@
 
+#include "routeme.h"
 #include "routemeaddress.h"
 #include "routemecontroller.h"
 #include "routemecoordinate.h"
 #include "routememap.h"
-#include "routemeroutemapobject.h"
-#include "routeme.h"
-#include "routemeserver.h"
+#include "routemepixmapobject.h"
 #include "routemeplace.h"
 #include "routemepositioninfo.h"
-#include "routemesearchmanager.h"
 #include "routemeroutemanager.h"
+#include "routemeroutemapobject.h"
+#include "routemesearchmanager.h"
+#include "routemeserver.h"
 
 #include <QtCore/QUrl>
 #include <QtDeclarative/QDeclarativeContext>
@@ -36,6 +37,7 @@ RouteMe::RouteMe(QWidget *parent)
     qmlRegisterType<RouteMeAddress>("com.routeme.types", 1, 0, "RouteAddress");
     qmlRegisterType<RouteMePlace>("com.routeme.types", 1, 0, "RoutePlace");
     qmlRegisterType<RouteMeSearchManager>("com.routeme.types", 1, 0, "RouteSearchManager");
+    qmlRegisterType<RouteMePixmapObject>("com.routeme.types", 1, 0, "RoutePixmap");
 
     m_view->setSource(QUrl("qrc:/qml/main.qml"));
 

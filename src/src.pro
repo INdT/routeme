@@ -27,7 +27,8 @@ HEADERS += \
     routemecontroller.h \
     routemeaddress.h \
     routemeplace.h \
-    routemesearchmanager.h
+    routemesearchmanager.h \
+    routemepixmapobject.h
 
 SOURCES += \
     routemegraphicsgeomap.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
     routemeaddress.cpp \
     routemeplace.cpp \
     routemesearchmanager.cpp \
+    routemepixmapobject.cpp \
     main.cpp
 
 RESOURCES += qml.qrc
