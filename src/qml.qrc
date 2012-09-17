@@ -9,5 +9,6 @@
         <file>qml/RouteMeAddressContent.qml</file>
 
         <file>qml/help_icon.png</file>
+		<file>qml/current_position.png</file>
     </qresource>
 </RCC>
