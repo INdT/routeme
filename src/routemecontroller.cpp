@@ -23,7 +23,7 @@ void RouteMeController::init()
     m_server->listen();
 }
 
-void RouteMeController::sendMyCurrentLocation(const QString &number, const QString &message)
+bool RouteMeController::sendMyCurrentLocation(const QString &number, const QString &message)
 {
     QMessageService *service = new QMessageService(this);
 
@@ -34,7 +34,7 @@ void RouteMeController::sendMyCurrentLocation(const QString &number, const QStri
     location.setBody(message);
     location.setTo(QMessageAddress(QMessageAddress::Phone, number));
 
-    service->send(location);
+    return service->send(location);
 }
 
 bool RouteMeController::isContactsAvailable()
