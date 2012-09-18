@@ -9,6 +9,7 @@
 
 #include "routemecoordinate.h"
 #include "routemeroutemapobject.h"
+#include "routemepixmapobject.h"
 
 class RouteMeGraphicsGeoMap;
 
@@ -22,6 +23,7 @@ class RouteMeMap : public QDeclarativeItem
     Q_PROPERTY(qreal zoomLevel READ zoomLevel WRITE setZoomLevel NOTIFY zoomLevelChanged)
     Q_PROPERTY(QString providerName READ providerName WRITE setProviderName NOTIFY providerNameChanged)
     Q_PROPERTY(RouteMeRouteMapObject* route READ route WRITE setRoute NOTIFY routeChanged)
+    Q_PROPERTY(RouteMePixmapObject* currentPixmapLocation READ currentPixmapLocation WRITE setCurrentPixmapLocation NOTIFY currentPixmapLocationChanged)
 
 public:
     RouteMeMap(QDeclarativeItem *parent = 0);
@@ -39,6 +41,9 @@ public:
     RouteMeRouteMapObject* route();
     void setRoute(RouteMeRouteMapObject* route);
 
+    RouteMePixmapObject* currentPixmapLocation() { return m_currentPixmapLocation; }
+    void setCurrentPixmapLocation(RouteMePixmapObject *pixmap);
+
     void componentComplete();
 
 signals:
@@ -46,6 +51,7 @@ signals:
     void providerNameChanged();
     void zoomLevelChanged();
     void routeChanged();
+    void currentPixmapLocationChanged();
 
 private:
     void init();
@@ -56,6 +62,7 @@ private:
     QString m_providerName;
     RouteMeCoordinate *m_coordinate;
     RouteMeRouteMapObject *m_route;
+    RouteMePixmapObject *m_currentPixmapLocation;
 };
 
 #endif

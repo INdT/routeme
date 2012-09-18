@@ -81,3 +81,10 @@ void RouteMeMap::setRoute(RouteMeRouteMapObject *route)
     m_map->addMapObject(m_route->geoMapRouteObject());
     emit routeChanged();
 }
+
+void RouteMeMap::setCurrentPixmapLocation(RouteMePixmapObject *pixmap)
+{
+    m_currentPixmapLocation = pixmap;
+    m_map->addMapObject(m_currentPixmapLocation->pixmapObject());
+    emit currentPixmapLocationChanged();
+}

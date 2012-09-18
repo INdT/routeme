@@ -16,6 +16,7 @@ Page {
 
         onCurrentCoordinateAvailable: {
             map.coordinate = currentCoordinate
+            pixmap.coordinate = currentCoordinate
             positionInfo.stopUpdates()
 
             searchManager.coordinate = currentCoordinate
@@ -49,9 +50,15 @@ Page {
     RouteMap {
         id: map
 
+        currentPixmapLocation: pixmap
         visible: pageStack.busy ? false : true
         width: 480
         height: 864
         zoomLevel: 13
+    }
+
+    RoutePixmap {
+        id: pixmap
+        source: ":/qml/current_position.png"
     }
 }
