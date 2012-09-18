@@ -41,11 +41,11 @@ bool RouteMeController::isContactsAvailable()
 {
     QContactManager *contactManager = new QContactManager(this);
 
-    QList<QContactLocalId> contactLocalId = contactManager->contactIds();
-    QList<QContactLocalId>::iterator it;
+    QList<QContact> contactList = contactManager->contacts();
+    QList<QContact>::iterator it;
 
-    for (it = contactLocalId.begin(); it != contactLocalId.end(); ++it) {
-        QContact contact = contactManager->contact(*it);
+    for (it = contactList.begin(); it != contactList.end(); ++it) {
+        QContact contact = *it;
         QContactPhoneNumber contactNumber = contact.detail<QContactPhoneNumber>();
 
         if (contactNumber.number() != "") {
