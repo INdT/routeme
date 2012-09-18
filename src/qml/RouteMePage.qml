@@ -61,13 +61,17 @@ Page {
             routemeContent.contactsInput.enabled = false
             routemeContent.addButton.enabled = false
 
-            if (addressBookPhoneNumber === "") {
+            if (addressBookPhoneNumber !== "") {
                 routemeContent.spinner.running = true
                 routemeContent.spinner.opacity = 1.0
-                controller.sendMyCurrentLocation(routemeContent.contactsInput.text, routemeContent.messageText);
+
+                var messageQueued = controller.sendMyCurrentLocation(addressBookPhoneNumber, routemeContent.messageText);
 
                 routemeContent.spinner.opacity = 0.0
                 routemeContent.spinner.running = false
+
+                if (messageQueued)
+                    rootWindow.pageStack.pop()
             }
         }
 
